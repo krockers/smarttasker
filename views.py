@@ -42,12 +42,11 @@ def login():
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME'] \
                 or request.form['password'] != app.config['PASSWORD']:
-        error = 'Invalid login. Please try again'
-        return render_template('login.html', error=error)
-    else:
-        session['logged_in'] = True
-        flash('Welcome!')
-        return redirect(url_for('tasks'))
+            error = 'Invalid login. Please try again'
+            return render_template('login.html', error=error)
+        else:
+            session['logged_in'] = True
+            flash('Welcome!')
+            return redirect(url_for('tasks'))
 
-
-return render_template('login.html')
+    return render_template('login.html')
